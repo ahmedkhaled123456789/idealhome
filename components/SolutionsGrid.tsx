@@ -1,3 +1,4 @@
+import { AppDirection } from "@/utils/app-direction";
 import {
   AppWindow,
   ArrowRight,
@@ -5,12 +6,11 @@ import {
   Refrigerator,
   Shirt,
 } from "lucide-react";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import MotionElement from "./motion/MotionElement";
 
 export async function SolutionsGrid() {
-  const locale = await getLocale();
-  const dir = locale === "en" ? "ltr" : "rtl";
+  const dir = (await AppDirection()) ? "rtl" : "ltr";
   const t = await getTranslations();
 
   const solutions = [

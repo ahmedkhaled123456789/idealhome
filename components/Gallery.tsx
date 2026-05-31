@@ -77,6 +77,7 @@ export function Gallery() {
   const filteredProjects = projects.filter(
     (p) => activeTab === "All" || p.category === activeTab,
   );
+
   return (
     <section className="w-full bg-brand-dark py-20 px-4 md:px-10 lg:px-20 border-y border-black shadow-lg">
       <div className="max-w-[1200px] mx-auto flex flex-col items-center">

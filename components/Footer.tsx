@@ -1,12 +1,12 @@
-"use client";
-import { motion } from "framer-motion";
 import { Globe, Mail, Phone } from "lucide-react";
-import { useTranslations } from "next-intl";
-export function Footer() {
-  const t = useTranslations();
+import { getTranslations } from "next-intl/server";
+import MotionElement from "./motion/MotionElement";
+
+export async function Footer() {
+  const t = await getTranslations();
   return (
     <footer className="w-full bg-black pt-20 pb-10 px-4 md:px-10 lg:px-20">
-      <motion.div
+      <MotionElement
         initial={{
           opacity: 0,
           y: 40,
@@ -150,7 +150,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-      </motion.div>
+      </MotionElement>
     </footer>
   );
 }

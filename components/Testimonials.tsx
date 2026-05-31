@@ -1,17 +1,17 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { AppDirection } from "@/utils/app-direction";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useLocaleContext } from "@/context/LocaleProvider";
-export function Testimonials() {
-  const t = useTranslations();
-  const { dir } = useLocaleContext();
+import { getTranslations } from "next-intl/server";
+import MotionElement from "./motion/MotionElement";
+export async function Testimonials() {
+  const t = await getTranslations();
+  const { dir } = await AppDirection();
+
   return (
     <section className="w-full bg-brand-dark py-20 px-4 md:px-10 lg:px-20">
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16 items-center">
         {/* Left Content */}
-        <motion.div
+        <MotionElement
+          itemType="div"
           initial={{
             opacity: 0,
             x: dir === "rtl" ? 40 : -40,
@@ -47,7 +47,7 @@ export function Testimonials() {
               />
             </button>
           </div>
-        </motion.div>
+        </MotionElement>
 
         {/* Right Cards */}
         <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -61,7 +61,8 @@ export function Testimonials() {
               text: "Lorem ipsum dolor sit amet consectetura dipiscin g ipsum rephen elit libero facilisis etiam ridiculus Lorem ipsum dolor sit amet consectetura dipiscin g ipsum rephen elit libero facilisis etiam ridicu",
             },
           ].map((testimonial, i) => (
-            <motion.div
+            <MotionElement
+              itemType="div"
               key={i}
               initial={{
                 opacity: 0,
@@ -98,7 +99,7 @@ export function Testimonials() {
                   <span className="text-sm text-white">{t("test.role")}</span>
                 </div>
               </div>
-            </motion.div>
+            </MotionElement>
           ))}
         </div>
       </div>

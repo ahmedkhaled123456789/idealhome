@@ -1,5 +1,4 @@
-"use client";
-import { motion } from "framer-motion";
+import { AppDirection } from "@/utils/app-direction";
 import {
   ArrowRight,
   CheckCircle2,
@@ -7,12 +6,12 @@ import {
   UploadCloud,
   Users,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useLocaleContext } from "@/context/LocaleProvider";
+import { getTranslations } from "next-intl/server";
+import MotionElement from "./motion/MotionElement";
 
-export function DesignBeforeSpending() {
-  const t = useTranslations();
-  const { dir } = useLocaleContext();
+export async function DesignBeforeSpending() {
+  const t = await getTranslations();
+  const { dir } = await AppDirection();
   const cards = [
     {
       icon: UploadCloud,
@@ -30,7 +29,7 @@ export function DesignBeforeSpending() {
 
   return (
     <section className="w-full bg-brand-light py-20 px-4 md:px-10 lg:px-20">
-      <motion.div
+      <MotionElement
         initial={{
           opacity: 0,
           y: 40,
@@ -83,7 +82,7 @@ export function DesignBeforeSpending() {
           {/* Right Cards */}
           <div className="flex flex-col sm:flex-row gap-6">
             {cards.map((card, i) => (
-              <motion.div
+              <MotionElement
                 key={i}
                 whileHover={{
                   y: -5,
@@ -96,11 +95,11 @@ export function DesignBeforeSpending() {
                 <span className="text-base text-white text-center whitespace-pre-line font-medium">
                   {card.label}
                 </span>
-              </motion.div>
+              </MotionElement>
             ))}
           </div>
         </div>
-      </motion.div>
+      </MotionElement>
     </section>
   );
 }

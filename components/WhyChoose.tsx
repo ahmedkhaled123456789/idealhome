@@ -1,10 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
-import { useTranslations } from "next-intl";
-export function WhyChoose() {
-  const t = useTranslations();
+import { getTranslations } from "next-intl/server";
+import MotionElement from "./motion/MotionElement";
+export async function WhyChoose() {
+  const t = await getTranslations();
   const checks = [
     t("choose.check1"),
     t("choose.check2"),
@@ -14,7 +12,8 @@ export function WhyChoose() {
 
   return (
     <section className="w-full bg-brand-light py-20 px-4 md:px-10 lg:px-20">
-      <motion.div
+      <MotionElement
+        itemType="div"
         initial={{
           opacity: 0,
           y: 40,
@@ -31,7 +30,7 @@ export function WhyChoose() {
           duration: 0.9,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="max-w-[1200px] mx-auto bg-gradient-to-b from-brand-teal to-black rounded-[20px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10"
+        className="max-w-[1200px] mx-auto bg-linear-to-b from-brand-teal to-black rounded-[20px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10"
       >
         {/* Left Image */}
         <div className="w-full md:w-1/2 rounded-[30px] overflow-hidden shadow-2xl">
@@ -50,8 +49,9 @@ export function WhyChoose() {
 
           <div className="flex flex-col gap-4">
             {checks.map((item, i) => (
-              <motion.div
+              <MotionElement
                 key={i}
+                itemType="div"
                 initial={{
                   opacity: 0,
                   x: 20,
@@ -73,7 +73,7 @@ export function WhyChoose() {
                 <span className="text-base text-white leading-relaxed">
                   {item}
                 </span>
-              </motion.div>
+              </MotionElement>
             ))}
           </div>
 
@@ -81,7 +81,7 @@ export function WhyChoose() {
             {t("choose.cta")}
           </button>
         </div>
-      </motion.div>
+      </MotionElement>
     </section>
   );
 }

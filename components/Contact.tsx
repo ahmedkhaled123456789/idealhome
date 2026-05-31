@@ -1,13 +1,13 @@
-"use client";
-import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
-export function Contact() {
-  const t = useTranslations();
+import { getTranslations } from "next-intl/server";
+import MotionElement from "./motion/MotionElement";
+import { submitContactForm } from "@/app/actions/contact";
+export async function Contact() {
+  const t = await getTranslations();
   return (
     <section className="w-full bg-linear-to-b from-brand-dark to-black py-24 px-4 md:px-10 lg:px-20 relative overflow-hidden">
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
         {/* Left Content */}
-        <motion.div
+        <MotionElement
           initial={{
             opacity: 0,
             y: 40,
@@ -35,10 +35,10 @@ export function Contact() {
           <p className="text-lg text-white/90 leading-relaxed">
             {t("contact.desc")}
           </p>
-        </motion.div>
+        </MotionElement>
 
         {/* Right Form */}
-        <motion.div
+        <MotionElement
           initial={{
             opacity: 0,
             y: 40,
@@ -62,32 +62,36 @@ export function Contact() {
             {t("contact.title2")}
           </h3>
 
-          <form
-            className="flex flex-col gap-5"
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form action={submitContactForm} className="flex flex-col gap-5">
             <div className="flex flex-col md:flex-row gap-5">
               <input
                 type="text"
+                name="name"
                 placeholder={t("contact.name")}
+                required
                 className="w-full bg-white rounded-md px-4 py-3 text-brand-muted focus:outline-none focus:ring-2 focus:ring-brand-teal"
               />
 
               <input
                 type="email"
+                name="email"
                 placeholder={t("contact.email")}
+                required
                 className="w-full bg-white rounded-md px-4 py-3 text-brand-muted focus:outline-none focus:ring-2 focus:ring-brand-teal"
               />
             </div>
             <input
               type="tel"
+              name="phone"
               placeholder={t("contact.phone")}
               className="w-full bg-white rounded-md px-4 py-3 text-brand-muted focus:outline-none focus:ring-2 focus:ring-brand-teal"
             />
 
             <textarea
+              name="message"
               placeholder={t("contact.msg")}
               rows={4}
+              required
               className="w-full bg-white rounded-md px-4 py-3 text-brand-muted focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none"
             />
 
@@ -98,7 +102,7 @@ export function Contact() {
               {t("contact.submit")}
             </button>
           </form>
-        </motion.div>
+        </MotionElement>
       </div>
     </section>
   );

@@ -1,16 +1,15 @@
-"use client";
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { useLocaleContext } from "@/context/LocaleProvider";
-export function FloatingAgent() {
-  const t = useTranslations();
-  const { dir } = useLocaleContext();
+import { AppDirection } from "@/utils/app-direction";
+import { getTranslations } from "next-intl/server";
+import MotionElement from "./motion/MotionElement";
+export async function FloatingAgent() {
+  const t = await getTranslations();
+  const { dir } = await AppDirection();
   return (
     <div
       className={`fixed bottom-8 z-50 flex items-end gap-4 ${dir === "rtl" ? "left-8 flex-row-reverse" : "right-8"}`}
     >
       {/* Tooltip */}
-      <motion.div
+      <MotionElement
         initial={{
           opacity: 0,
           y: 10,
@@ -34,7 +33,7 @@ export function FloatingAgent() {
         <div
           className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-white rotate-45 ${dir === "rtl" ? "-left-1" : "-right-1"}`}
         />
-      </motion.div>
+      </MotionElement>
 
       {/* Avatar Button */}
       <a href="#contact" className="relative group block">

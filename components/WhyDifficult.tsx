@@ -1,12 +1,12 @@
-"use client";
-
+import { AppDirection } from "@/utils/app-direction";
 import { motion } from "framer-motion";
 import { ArrowLeft, Layers, PenTool, Settings, Wrench } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useLocaleContext } from "@/context/LocaleProvider";
-export function WhyDifficult() {
-  const t = useTranslations();
-  const { dir } = useLocaleContext();
+import { getTranslations } from "next-intl/server";
+import MotionElement from "./motion/MotionElement";
+export async function WhyDifficult() {
+  const t = await getTranslations();
+
+  const { dir } = await AppDirection();
   const problems = [
     t("diff.prob1"),
     t("diff.prob2"),
@@ -36,12 +36,12 @@ export function WhyDifficult() {
       desc: t("diff.app4.desc"),
     },
   ];
- 
+
   return (
     <section className="w-full bg-brand-light py-20 px-4 md:px-10 lg:px-20">
       <div className="max-w-[1400px] mx-auto bg-brand-dark rounded-[20px] p-8 md:p-12 lg:p-16 border border-brand-dark">
         {/* Top Section */}
-        <motion.div
+        <MotionElement
           initial={{
             opacity: 0,
             y: 40,
@@ -81,10 +81,10 @@ export function WhyDifficult() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </MotionElement>
 
         {/* Image Section */}
-        <motion.div
+        <MotionElement
           initial={{
             opacity: 0,
             scale: 0.95,
@@ -118,11 +118,11 @@ export function WhyDifficult() {
               />
             </button>
           </div>
-        </motion.div>
+        </MotionElement>
 
         {/* The Approach Section */}
         <div className="flex flex-col lg:flex-row gap-10">
-          <motion.div
+          <MotionElement
             initial={{
               opacity: 0,
               x: dir === "rtl" ? 40 : -40,
@@ -144,11 +144,11 @@ export function WhyDifficult() {
             <h3 className="font-heading font-semibold text-3xl md:text-[32px] text-white leading-tight whitespace-pre-line">
               {t("diff.app.title")}
             </h3>
-          </motion.div>
+          </MotionElement>
 
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
             {approaches.map((item, i) => (
-              <motion.div
+              <MotionElement
                 key={i}
                 initial={{
                   opacity: 0,
@@ -176,7 +176,7 @@ export function WhyDifficult() {
                 <p className="text-sm text-brand-light leading-relaxed text-justify">
                   {item.desc}
                 </p>
-              </motion.div>
+              </MotionElement>
             ))}
           </div>
         </div>
