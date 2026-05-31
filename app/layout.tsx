@@ -35,8 +35,9 @@ export default async function RootLayout({
       lang={locale}
       dir={dir}
       className={`${inter.variable} ${cairo.variable} ${lexend.variable} ${bebasNeue.variable}`}
+      suppressHydrationWarning
     >
-      <body>
+      <body suppressHydrationWarning>
         <LocaleProvider messages={messages}>
           <Navbar />
           <main className="min-h-dvh">{children}</main>
