@@ -1,11 +1,10 @@
 "use client";
+import { OUR_SOLUTIONS } from "@/constants/our-solutions";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
-import { OUR_SOLUTIONS } from "@/constants/our-solutions";
-
 gsap.registerPlugin(ScrollTrigger);
 
 export const OurSolutionSection = () => {
@@ -21,6 +20,7 @@ export const OurSolutionSection = () => {
   const headerIconRef = useRef<HTMLDivElement>(null);
   const headerTitleRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
   cardsRef.current = [];
 
   const setCardRef = (el: HTMLDivElement | null) => {
@@ -231,7 +231,7 @@ export const OurSolutionSection = () => {
         {/* Transparent stroke intro text (SVG) */}
         <svg
           ref={strokeTextRef}
-          className="pointer-events-none absolute inset-x-0 top-0 z- h-dvh w-full select-none"
+          className="pointer-events-none absolute inset-x-0 top-0 z-[5] h-dvh w-full select-none"
           viewBox="0 0 1440 900"
           preserveAspectRatio="xMidYMid slice"
           aria-hidden="true"
@@ -588,13 +588,12 @@ export const OurSolutionSection = () => {
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             {OUR_SOLUTIONS.map((solution) => (
               <ProductCard
-                key={solution.title}
-                ref={setCardRef}
-                imageUrl={solution.image}
+                key={solution.href}
                 title={solution.title}
                 description={solution.description}
-                href={solution.href}
+                imageUrl={solution.image}
                 icon={solution.icon}
+                ref={setCardRef}
               />
             ))}
           </div>
