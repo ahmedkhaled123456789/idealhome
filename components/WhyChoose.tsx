@@ -30,14 +30,14 @@ export async function WhyChoose() {
           duration: 0.9,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="max-w-[1200px] mx-auto bg-linear-to-b from-brand-teal to-black rounded-[20px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10"
+        className="max-w-[1400px] mx-auto bg-brand-teal  rounded-[20px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10"
       >
         {/* Left Image */}
-        <div className="w-full md:w-1/2 rounded-[30px] overflow-hidden shadow-2xl">
+        <div className="w-full md:w-1/2 rounded-[30px] overflow-hidden ">
           <img
             src="./assets/why.png"
             alt="Villa Interior"
-            className="w-full h-[400px] object-cover"
+            className="w-full max-h-[600px] object-cover"
           />
         </div>
 

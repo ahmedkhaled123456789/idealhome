@@ -107,7 +107,7 @@ export async function WhyDifficult() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage:
-                'url("https://images.unsplash.com/photo-1505015920881-0f83c2f7c95e?q=80&w=2070&auto=format&fit=crop")',
+                'url("/assets/1.webp")',
             }}
           />
 
