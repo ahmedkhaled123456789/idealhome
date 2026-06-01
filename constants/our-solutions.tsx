@@ -1,7 +1,7 @@
 export const OUR_SOLUTIONS = [
   {
-    title: "Kitchens",
-    description: "Designed for daily use, built for long-term performance",
+    titleKey: "ourSolutions.cards.kitchens.title",
+    descriptionKey: "ourSolutions.cards.kitchens.desc",
     href: "/service/kitchens",
     image: "/assets/kitchen-product-image.webp",
     icon: (
@@ -25,8 +25,8 @@ export const OUR_SOLUTIONS = [
     ),
   },
   {
-    title: "Wardrobes & Closets",
-    description: "Structured storage that stays organized over time",
+    titleKey: "ourSolutions.cards.closets.title",
+    descriptionKey: "ourSolutions.cards.closets.desc",
     href: "/service/wardrobes",
     image: "/assets/wardrobe-product-image.webp",
     icon: (
@@ -49,8 +49,8 @@ export const OUR_SOLUTIONS = [
     ),
   },
   {
-    title: "Interior Doors",
-    description: "Precise finishes that hold up with everyday use",
+    titleKey: "ourSolutions.cards.doors.title",
+    descriptionKey: "ourSolutions.cards.doors.desc",
     href: "/service/interior-doors",
     image: "/assets/door-product-image.webp",
     icon: (
@@ -77,8 +77,8 @@ export const OUR_SOLUTIONS = [
     ),
   },
   {
-    title: "Premium Window Systems",
-    description: "Sealed systems for better comfort and control",
+    titleKey: "ourSolutions.cards.windows.title",
+    descriptionKey: "ourSolutions.cards.windows.desc",
     href: "/service/upvc-window-door-systems",
     image: "/assets/window-systems-image.webp",
     icon: (

@@ -1,4 +1,6 @@
-import { AppDirection } from "@/utils/app-direction";
+"use client";
+
+import { useLocaleContext } from "@/context/LocaleProvider";
 import {
   ArrowRight,
   CheckCircle2,
@@ -6,12 +8,12 @@ import {
   UploadCloud,
   Users,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import MotionElement from "./motion/MotionElement";
 
-export async function DesignBeforeSpending() {
-  const t = await getTranslations();
-  const { dir } = await AppDirection();
+export function DesignBeforeSpending() {
+  const t = useTranslations();
+  const { dir } = useLocaleContext();
   const cards = [
     {
       icon: UploadCloud,
@@ -61,41 +63,41 @@ export async function DesignBeforeSpending() {
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             {/* Left Content */}
             <div className="flex-1 flex flex-col gap-6">
-              <h2 className="font-heading font-semibold text-3xl md:text-[32px] leading-tight text-white">
-                {t("design.title")}
+              <h2 className="font-heading font-semibold text-4xl md:text-[32px] leading-tight text-white">
+                {t("design.title")} <br />  <span className="text-brand-teal"> {t("design.subtitle")}</span>
               </h2>
-  
-              <p className="text-base text-brand-light">
+             
+              <p className="text-lg md:text-xl text-brand-light">
                 {t("design.desc")}
               </p>
   
               <div className="grid grid-cols-2 gap-4 mt-2">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-brand-teal" />
-                  <span className="text-sm text-white">
+                  <CheckCircle2 className="w-6 h-6 text-brand-teal" />
+                  <span className="text-base md:text-lg text-white">
                     {t("design.check1")}
                   </span>
                 </div>
   
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-brand-teal" />
-                  <span className="text-sm text-white">
+                  <CheckCircle2 className="w-6 h-6 text-brand-teal" />
+                  <span className="text-base md:text-lg text-white">
                     {t("design.check2")}
                   </span>
                 </div>
   
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-brand-teal" />
-                  <span className="text-sm text-white">
+                  <CheckCircle2 className="w-6 h-6 text-brand-teal" />
+                  <span className="text-base md:text-lg text-white">
                     {t("design.check3")}
                   </span>
                 </div>
               </div>
   
-              <button className="mt-6 self-start bg-brand-teal hover:bg-brand-teal/90 text-white px-8 py-4 rounded-xl font-medium text-base flex items-center gap-3 transition-all">
+              <button className="mt-6 self-start bg-brand-teal hover:bg-brand-teal/90 text-white px-10 py-4 rounded-xl font-medium text-lg flex items-center gap-4 transition-all">
                 {t("design.cta")}
                 <ArrowRight
-                  className={`w-5 h-5 ${
+                  className={`w-6 h-6 ${
                     dir === "rtl" ? "rotate-180" : ""
                   }`}
                 />
@@ -110,13 +112,13 @@ export async function DesignBeforeSpending() {
                   whileHover={{
                     y: -5,
                   }}
-                  className="w-[160px] md:w-[190px] h-[200px] md:h-[230px] bg-white/10 backdrop-blur-lg border border-white/20 rounded-[20px] flex flex-col items-center justify-center gap-6 p-4"
+                  className="w-[180px] md:w-[220px] h-[220px] md:h-[260px] bg-white/10 backdrop-blur-lg border border-white/20 rounded-[20px] flex flex-col items-center justify-center gap-6 p-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-brand-teal flex items-center justify-center">
-                    <card.icon className="w-8 h-8 text-white" />
+                  <div className="w-20 h-20 rounded-full bg-brand-teal flex items-center justify-center">
+                    <card.icon className="w-10 h-10 text-white" />
                   </div>
-  
-                  <span className="text-base text-white text-center whitespace-pre-line font-medium">
+
+                  <span className="text-lg md:text-xl text-white text-center whitespace-pre-line font-medium">
                     {card.label}
                   </span>
                 </MotionElement>

@@ -55,7 +55,7 @@ const ProductCard = ({
         </div>
         <div className="mt-auto flex justify-end">
           <a
-            className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-primary transition-all duration-300 group-hover:bg-primary-hover group-hover:shadow-[0_0_20px_rgb(var(--primary)_/_0.4)]"
+            className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-brand-teal transition-all duration-300 hover:bg-brand-teal/90 hover:shadow-[0_0_20px_rgba(87,183,192,0.28)]"
             aria-label={ariaLabel ?? `Learn more about ${title}`}
             href={href}
           >

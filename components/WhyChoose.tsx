@@ -1,8 +1,10 @@
+"use client";
+
 import { CheckCircle2 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import MotionElement from "./motion/MotionElement";
-export async function WhyChoose() {
-  const t = await getTranslations();
+export function WhyChoose() {
+  const t = useTranslations();
   const checks = [
     t("choose.check1"),
     t("choose.check2"),

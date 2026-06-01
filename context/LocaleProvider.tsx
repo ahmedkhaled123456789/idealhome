@@ -23,12 +23,14 @@ const LocaleContext = createContext<
 
 export function LocaleProvider({
   children,
+  locale: initialLocale,
   messages: initialMessages,
 }: {
   children: ReactNode;
+  locale: Locale;
   messages: Messages;
 }) {
-  const [locale, setLocale] = useState<Locale>("en");
+  const [locale, setLocale] = useState<Locale>(initialLocale);
   const [messages, setMessages] = useState<Messages>(initialMessages);
   const dir: Direction = locale === "ar" ? "rtl" : "ltr";
 

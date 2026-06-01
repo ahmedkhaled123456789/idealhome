@@ -38,7 +38,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>
-        <LocaleProvider messages={messages}>
+        <LocaleProvider locale={locale} messages={messages}>
           <Navbar />
           <main className="min-h-dvh">{children}</main>
           <Footer />

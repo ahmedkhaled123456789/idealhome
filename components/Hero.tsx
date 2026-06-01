@@ -1,9 +1,11 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import MotionElement from "./motion/MotionElement";
 
-export async function Hero() {
-  const t = await getTranslations();
+export function Hero() {
+  const t = useTranslations();
 
   return (
     <section className="relative h-screen  overflow-hidden">

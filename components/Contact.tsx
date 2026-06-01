@@ -1,9 +1,11 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
 import MotionElement from "./motion/MotionElement";
 import { submitContactForm } from "@/app/actions/contact";
 
-export async function Contact() {
-  const t = await getTranslations();
+export function Contact() {
+  const t = useTranslations();
 
   return (
     <section className="relative w-full overflow-hidden bg-[#0E0E0E]  py-24 px-4 md:px-10 lg:px-20">

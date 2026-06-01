@@ -1,9 +1,11 @@
+"use client";
+
 import { Globe, Mail, Phone } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import MotionElement from "./motion/MotionElement";
 import Image from "next/image";
-export async function Footer() {
-  const t = await getTranslations();
+export function Footer() {
+  const t = useTranslations();
   return (
     <footer
   className="relative w-full pt-20 pb-10 px-4 md:px-10 lg:px-20 overflow-hidden"

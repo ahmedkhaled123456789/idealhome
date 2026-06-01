@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import MotionElement from "./motion/MotionElement";
+import { useLocaleContext } from "@/context/LocaleProvider";
 
 const testimonials = [
   {
@@ -19,11 +20,12 @@ const testimonials = [
     name: "Alex Roke",
     image: "/assets/user/ahmed.jpeg",
     text: "Lorem ipsum dolor sit amet consectetura dipiscin g ipsum rephen elit libero facilisis etiam ridiculus Lorem ipsum dolor sit amet consectetura dipiscin g ipsum rephen elit libero facilisis etiam ridicu",
-  } 
+  }  
 ];
 
-export function Testimonials({ dir }: { dir: "ltr" | "rtl" }) {
+export function Testimonials() {
   const t = useTranslations();
+  const { dir } = useLocaleContext();
   const swiperRef = useRef<SwiperType | null>(null);
 
   // ── Track slide position to know which arrow is "active" ──────────────────

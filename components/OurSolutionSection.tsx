@@ -5,9 +5,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
+import { useTranslations } from "next-intl";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export const OurSolutionSection = () => {
+  const t = useTranslations();
   const sectionRef = useRef<HTMLElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const foregroundBgRef = useRef<HTMLDivElement>(null);
@@ -192,6 +195,10 @@ export const OurSolutionSection = () => {
     { scope: sectionRef },
   );
 
+  const stroke1 = t("ourSolutions.stroke1");
+  const stroke2 = t("ourSolutions.stroke2");
+  const stroke3 = t("ourSolutions.stroke3");
+
   return (
     <section
       ref={sectionRef}
@@ -249,7 +256,7 @@ export const OurSolutionSection = () => {
             letterSpacing="0.02em"
             textAnchor="middle"
           >
-            OUR
+            {stroke1}
           </text>
           <text
             x="720"
@@ -264,7 +271,7 @@ export const OurSolutionSection = () => {
             letterSpacing="0.02em"
             textAnchor="middle"
           >
-            INTERIOR
+            {stroke2}
           </text>
           <text
             x="720"
@@ -279,7 +286,7 @@ export const OurSolutionSection = () => {
             letterSpacing="0.02em"
             textAnchor="middle"
           >
-            SOLUTIONS
+            {stroke3}
           </text>
         </svg>
 
@@ -324,7 +331,7 @@ export const OurSolutionSection = () => {
                   letterSpacing="0.02em"
                   textAnchor="middle"
                 >
-                  OUR
+                  {stroke1}
                 </text>
                 <text
                   x="720"
@@ -336,7 +343,7 @@ export const OurSolutionSection = () => {
                   letterSpacing="0.02em"
                   textAnchor="middle"
                 >
-                  INTERIOR
+                  {stroke2}
                 </text>
                 <text
                   x="720"
@@ -348,7 +355,7 @@ export const OurSolutionSection = () => {
                   letterSpacing="0.02em"
                   textAnchor="middle"
                 >
-                  SOLUTIONS
+                  {stroke3}
                 </text>
               </g>
             </mask>
@@ -394,7 +401,7 @@ export const OurSolutionSection = () => {
               letterSpacing="0.02em"
               textAnchor="middle"
             >
-              OUR
+              {stroke1}
             </text>
             <text
               x="720"
@@ -409,7 +416,7 @@ export const OurSolutionSection = () => {
               letterSpacing="0.02em"
               textAnchor="middle"
             >
-              INTERIOR
+              {stroke2}
             </text>
             <text
               x="720"
@@ -424,7 +431,7 @@ export const OurSolutionSection = () => {
               letterSpacing="0.02em"
               textAnchor="middle"
             >
-              SOLUTIONS
+              {stroke3}
             </text>
           </g>
         </svg>
@@ -473,7 +480,7 @@ export const OurSolutionSection = () => {
                 textShadow: "rgba(0, 0, 0, 0.3) 0px 10px 28px",
               }}
             >
-              Our Solutions
+              {t("ourSolutions.introTitle")}
             </h2>
             <p
               style={{
@@ -487,10 +494,10 @@ export const OurSolutionSection = () => {
                 textShadow: "rgba(0, 0, 0, 0.3) 0px 10px 28px",
               }}
             >
-              We provide all types of integrated
+              {t("ourSolutions.introDescLine1")}
               <br />
               <span style={{ color: "var(--primary)" }}>
-                KITCHEN, CLOSET, DOOR Services
+                {t("ourSolutions.introDescHighlight")}
               </span>
             </p>
           </div>
@@ -565,7 +572,7 @@ export const OurSolutionSection = () => {
                   color: "#ffffff",
                 }}
               >
-                Our Solutions
+                {t("ourSolutions.headerTitle")}
               </h2>
               <p
                 style={{
@@ -577,10 +584,10 @@ export const OurSolutionSection = () => {
                   marginTop: "0.75rem",
                 }}
               >
-                We provide all types of integrated
+                {t("ourSolutions.headerDescLine1")}
                 <br />
                 <span style={{ color: "var(--primary)" }}>
-                  KITCHEN, CLOSET, DOOR Services
+                  {t("ourSolutions.headerDescHighlight")}
                 </span>
               </p>
             </div>
@@ -589,42 +596,36 @@ export const OurSolutionSection = () => {
             {OUR_SOLUTIONS.map((solution) => (
               <ProductCard
                 key={solution.href}
-                title={solution.title}
-                description={solution.description}
+                title={t(solution.titleKey)}
+                description={t(solution.descriptionKey)}
                 imageUrl={solution.image}
                 icon={solution.icon}
                 ref={setCardRef}
               />
             ))}
-          </div>
-          <div className="mt-8 text-center">
+          </div> 
+          <div className="mt-8 flex justify-center">
             <a
-              className="inline-flex items-center gap-2 rounded-[8px] bg-primary px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_24px_rgb(var(--primary)_/_0.35)]"
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                minWidth: "236px",
-                height: "52px",
-              }}
+              className="inline-flex items-center gap-3 justify-center rounded-full bg-brand-teal px-6 py-3 text-base font-medium text-white shadow-md hover:bg-brand-teal/90 transition-all duration-200"
+              style={{ fontFamily: "'Inter', sans-serif" }}
               href="/projects"
             >
-              Explore Our Projects
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-arrow-right h-[18px] w-[18px]"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
+              <span className="px-2">{t("ourSolutions.cta")}</span>
+                 <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4 text-white"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+             </a>
           </div>
         </div>
       </div>

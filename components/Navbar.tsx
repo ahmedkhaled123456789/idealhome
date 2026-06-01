@@ -11,7 +11,7 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-6 left-0 right-0 z-50 mx-4 md:mx-10 lg:mx-20">
-      <div className="max-w-[1440px] mx-auto bg-brand-black/80 backdrop-blur-md border border-brand-dark rounded-full px-6 py-4 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto bg-brand-black/80 backdrop-blur-md border border-brand-dark rounded-2xl px-6 py-4 flex items-center justify-between">
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-8">
           <a

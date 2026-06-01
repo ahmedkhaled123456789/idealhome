@@ -1,12 +1,13 @@
-import { AppDirection } from "@/utils/app-direction";
+"use client";
+
+import { useLocaleContext } from "@/context/LocaleProvider";
 import { motion } from "framer-motion";
 import { ArrowLeft, Layers, PenTool, Settings, Wrench } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import MotionElement from "./motion/MotionElement";
-export async function WhyDifficult() {
-  const t = await getTranslations();
-
-  const { dir } = await AppDirection();
+export function WhyDifficult() {
+  const t = useTranslations();
+  const { dir } = useLocaleContext();
   const problems = [
     t("diff.prob1"),
     t("diff.prob2"),

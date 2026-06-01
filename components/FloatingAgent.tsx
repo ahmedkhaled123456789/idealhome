@@ -1,9 +1,11 @@
-import { AppDirection } from "@/utils/app-direction";
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useLocaleContext } from "@/context/LocaleProvider";
+import { useTranslations } from "next-intl";
 import MotionElement from "./motion/MotionElement";
-export async function FloatingAgent() {
-  const t = await getTranslations();
-  const { dir } = await AppDirection();
+export function FloatingAgent() {
+  const t = useTranslations();
+  const { dir } = useLocaleContext();
   return (
     <div
       className={`fixed bottom-8 z-50 flex items-end gap-4 ${dir === "rtl" ? "left-8 flex-row-reverse" : "right-8"}`}
@@ -27,9 +29,7 @@ export async function FloatingAgent() {
           delay: 1,
           duration: 0.5,
         }}
-        className="hidden md:block bg-white text-brand-dark px-4 py-2 rounded-xl shadow-xl font-medium text-sm relative"
-      >
-        {t("agent.help")}
+       >
         <div
           className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-white rotate-45 ${dir === "rtl" ? "-left-1" : "-right-1"}`}
         />
