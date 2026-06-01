@@ -2,19 +2,23 @@
 
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useLocaleContext } from "@/context/LocaleProvider";
 import MotionElement from "./motion/MotionElement";
 
 export function Hero() {
   const t = useTranslations();
+  const { dir } = useLocaleContext();
 
   return (
-    <section className="relative h-screen  overflow-hidden">
+    <section className="relative h-[100dvh] overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
+        poster="/assets/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source
@@ -92,7 +96,7 @@ export function Hero() {
             className="mt-12"
           >
             <button
-              className="
+              className={`
                 inline-flex
                 items-center
                 gap-3
@@ -105,10 +109,14 @@ export function Hero() {
                 text-md
                 hover:scale-105
                 transition-all
-              "
+                ${dir === "rtl" ? "flex-row-reverse" : ""}
+              `}
             >
               {t("hero.cta")}
-              <ArrowRight size={22} />
+              <ArrowRight
+                size={22}
+                className={dir === "rtl" ? "rotate-180" : ""}
+              />
             </button>
           </MotionElement>
 

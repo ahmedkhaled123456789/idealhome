@@ -1,3 +1,4 @@
+import { useLocaleContext } from "@/context/LocaleProvider";
 import Image from "next/image";
 
 interface ProductCardProps {
@@ -19,6 +20,8 @@ const ProductCard = ({
   ariaLabel,
   ref,
 }: ProductCardProps) => {
+  const { dir } = useLocaleContext();
+
   return (
     <div
       ref={ref}
@@ -53,7 +56,7 @@ const ProductCard = ({
             {description}
           </p>
         </div>
-        <div className="mt-auto flex justify-end">
+        <div className={`mt-auto flex ${dir === "rtl" ? "justify-start" : "justify-end"}`}>
           <a
             className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-brand-teal transition-all duration-300 hover:bg-brand-teal/90 hover:shadow-[0_0_20px_rgba(87,183,192,0.28)]"
             aria-label={ariaLabel ?? `Learn more about ${title}`}
@@ -69,7 +72,7 @@ const ProductCard = ({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="lucide lucide-arrow-right h-4 w-4 text-white"
+              className={`lucide lucide-arrow-right h-4 w-4 text-white ${dir === "rtl" ? "rotate-180" : ""}`}
               aria-hidden="true"
             >
               <path d="M5 12h14"></path>
