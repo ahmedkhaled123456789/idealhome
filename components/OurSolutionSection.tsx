@@ -3,7 +3,7 @@ import { OUR_SOLUTIONS } from "@/constants/our-solutions";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import ProductCard from "./ProductCard";
 import { useTranslations } from "next-intl";
 
@@ -24,7 +24,9 @@ export const OurSolutionSection = () => {
   const headerTitleRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  cardsRef.current = [];
+  useEffect(() => {
+    cardsRef.current = [];
+  }, []);
 
   const setCardRef = (el: HTMLDivElement | null) => {
     if (el && !cardsRef.current.includes(el)) {
@@ -251,7 +253,7 @@ export const OurSolutionSection = () => {
             strokeWidth="3"
             paintOrder="stroke"
             fontFamily='"Bebas Neue", Impact, sans-serif'
-            fontSize="168"
+            fontSize="clamp(96px, 16vw, 168px)"
             fontWeight="400"
             letterSpacing="0.02em"
             textAnchor="middle"
@@ -266,7 +268,7 @@ export const OurSolutionSection = () => {
             strokeWidth="3"
             paintOrder="stroke"
             fontFamily='"Bebas Neue", Impact, sans-serif'
-            fontSize="168"
+            fontSize="clamp(96px, 16vw, 168px)"
             fontWeight="400"
             letterSpacing="0.02em"
             textAnchor="middle"
@@ -281,7 +283,7 @@ export const OurSolutionSection = () => {
             strokeWidth="3"
             paintOrder="stroke"
             fontFamily='"Bebas Neue", Impact, sans-serif'
-            fontSize="168"
+            fontSize="clamp(96px, 16vw, 168px)"
             fontWeight="400"
             letterSpacing="0.02em"
             textAnchor="middle"
@@ -326,7 +328,7 @@ export const OurSolutionSection = () => {
                   y="296"
                   fill="black"
                   fontFamily='"Bebas Neue", Impact, sans-serif'
-                  fontSize="168"
+                  fontSize="clamp(96px, 16vw, 168px)"
                   fontWeight="400"
                   letterSpacing="0.02em"
                   textAnchor="middle"
@@ -338,7 +340,7 @@ export const OurSolutionSection = () => {
                   y="450"
                   fill="black"
                   fontFamily='"Bebas Neue", Impact, sans-serif'
-                  fontSize="168"
+                  fontSize="clamp(96px, 16vw, 168px)"
                   fontWeight="400"
                   letterSpacing="0.02em"
                   textAnchor="middle"
@@ -350,7 +352,7 @@ export const OurSolutionSection = () => {
                   y="604"
                   fill="black"
                   fontFamily='"Bebas Neue", Impact, sans-serif'
-                  fontSize="168"
+                  fontSize="clamp(96px, 16vw, 168px)"
                   fontWeight="400"
                   letterSpacing="0.02em"
                   textAnchor="middle"
@@ -396,7 +398,7 @@ export const OurSolutionSection = () => {
               strokeWidth="3"
               paintOrder="stroke"
               fontFamily='"Bebas Neue", Impact, sans-serif'
-              fontSize="168"
+              fontSize="clamp(96px, 16vw, 168px) "
               fontWeight="400"
               letterSpacing="0.02em"
               textAnchor="middle"
@@ -411,7 +413,7 @@ export const OurSolutionSection = () => {
               strokeWidth="3"
               paintOrder="stroke"
               fontFamily='"Bebas Neue", Impact, sans-serif'
-              fontSize="168"
+              fontSize="clamp(96px, 16vw, 168px) "
               fontWeight="400"
               letterSpacing="0.02em"
               textAnchor="middle"
@@ -426,7 +428,7 @@ export const OurSolutionSection = () => {
               strokeWidth="3"
               paintOrder="stroke"
               fontFamily='"Bebas Neue", Impact, sans-serif'
-              fontSize="168"
+              fontSize="clamp(96px, 16vw, 168px) "
               fontWeight="400"
               letterSpacing="0.02em"
               textAnchor="middle"
@@ -567,9 +569,11 @@ export const OurSolutionSection = () => {
                 style={{
                   fontFamily: "'Lexend', Inter, sans-serif",
                   fontWeight: 700,
-                  fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
+                  fontSize: "clamp(1.9rem, 4vw, 3rem)",
                   lineHeight: 1.2,
                   color: "#ffffff",
+                  maxWidth: "min(100vw, 820px)",
+                  margin: "0 auto",
                 }}
               >
                 {t("ourSolutions.headerTitle")}
@@ -578,10 +582,13 @@ export const OurSolutionSection = () => {
                 style={{
                   fontFamily: "'Lexend', Inter, sans-serif",
                   fontWeight: 600,
-                  fontSize: "clamp(1.1rem, 2.3vw, 2rem)",
+                  fontSize: "clamp(1rem, 2.3vw, 1.8rem)",
                   lineHeight: 1.3,
                   color: "#ffffff",
                   marginTop: "0.75rem",
+                  maxWidth: "min(100vw, 820px)",
+                  marginLeft: "auto",
+                  marginRight: "auto",
                 }}
               >
                 {t("ourSolutions.headerDescLine1")}
